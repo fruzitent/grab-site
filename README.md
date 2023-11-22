@@ -64,12 +64,19 @@ on a specific version of Python (3.9, 3.10, 3.11, 3.12) and with specific depend
 Install using Docker
 ---
 
+For best performance use:
 ```shell
 docker run --rm --name gs-0 --publish 29000:29000 ghcr.io/archiveteam/grab-site:latest
-docker exec gs-0 grab-site --debug "https://example.org"
+docker exec gs-0 grab-site "https://example.org"
 docker exec gs-0 gs-dump-urls "/tmp/gs/<url>-<date>-<hash>/wpull.db" done
 ```
 
+For quick usage with debug logging and with cleanup of the container:
+```shell
+docker run --rm --name gs-0 --detach -v $PWD/data:/tmp/gs --publish 29000:29000 ghcr.io/archiveteam/grab-site:latest
+docker exec gs-0 grab-site --debug --no-offsite-links "https://example.org"
+docker stop gs-0
+```
 
 
 Install on Debian
