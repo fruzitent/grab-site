@@ -66,7 +66,7 @@ Install using Docker
 
 For quick usage with debug logging and with cleanup of the container:
 ```shell
-docker run --rm --detach --name gs-0 --publish 29000:29000 --volume ${PWD}/data:/tmp/gs ghcr.io/archiveteam/grab-site:latest
+docker run --rm --detach --name gs-0 --publish 29000:29000 --volume "${PWD}/data:/tmp/gs" ghcr.io/archiveteam/grab-site:latest
 docker exec gs-0 grab-site --debug --no-offsite-links "https://example.org"
 docker stop gs-0
 ```
